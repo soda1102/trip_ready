@@ -152,7 +152,7 @@ export default function Home() {
       <header>
         <div className="logo">
           <Image
-            src="/logo.png"
+            src="/trip_ready/logo.png"
             alt="트레디 로고"
             width={480}
             height={377}
