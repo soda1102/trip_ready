@@ -17,7 +17,6 @@ const initialTrip: TripInfo = {
   travelType: "domestic",
   destination: "",
   startDate: "",
-  endDate: "",
 };
 
 const STORAGE_KEY = "trip-ready-data";
@@ -66,12 +65,12 @@ export default function Home() {
           setGenerated(data.generated);
         }
       } else {
-        // 처음 방문: 출발·도착 날짜를 오늘로
-        setTrip((prev) => ({ ...prev, startDate: today, endDate: today }));
+        // 처음 방문: 출발 날짜를 오늘로
+        setTrip((prev) => ({ ...prev, startDate: today}));
       }
     } catch {
       console.error("저장된 정보를 불러오지 못했습니다.");
-      setTrip((prev) => ({ ...prev, startDate: today, endDate: today }));
+      setTrip((prev) => ({ ...prev, startDate: today}));
     }
 
     setLoaded(true);
@@ -104,13 +103,8 @@ export default function Home() {
       return;
     }
 
-    if (!trip.startDate || !trip.endDate) {
+    if (!trip.startDate) {
       alert("여행 날짜를 입력해주세요.");
-      return;
-    }
-
-    if (trip.endDate < trip.startDate) {
-      alert("도착 날짜는 출발 날짜 이후여야 합니다.");
       return;
     }
 

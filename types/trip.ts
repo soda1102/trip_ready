@@ -13,7 +13,6 @@ export interface TripInfo {
   travelType: TravelType;
   destination: string;
   startDate: string;
-  endDate: string;
 }
 
 // 체크리스트

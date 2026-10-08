@@ -16,11 +16,6 @@ export default function TripForm({
   const updateTrip = (field: keyof TripInfo, value: string) => {
     const next = { ...trip, [field]: value };
 
-    // 출발일을 도착일보다 늦게 고르면 도착일도 같이 맞춤
-    if (field === "startDate" && next.endDate < value) {
-      next.endDate = value;
-    }
-
     setTrip(next);
   };
 
@@ -85,17 +80,6 @@ export default function TripForm({
             type="date"
             value={trip.startDate}
             onChange={(e) => updateTrip("startDate", e.target.value)}
-          />
-        </div>
-
-        <div className="field">
-          <label htmlFor="endDate">도착 날짜</label>
-          <input
-            id="endDate"
-            type="date"
-            min={trip.startDate}
-            value={trip.endDate}
-            onChange={(e) => updateTrip("endDate", e.target.value)}
           />
         </div>
       </div>
